@@ -1,0 +1,518 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Bona Nova", serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+
+  background: #efefef;
+}
+input,
+textarea,
+button,
+select {
+  font-family: "Bona Nova", serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+@mixin flex(
+  $align: flex-start,
+  $justify: flex-start,
+  $flex-direction: row,
+  $wrap: nowrap
+) {
+  display: flex;
+  align-items: $align; /* Chiều dọc */
+  justify-content: $justify; /* Chiều ngang */
+  flex-direction: $flex-direction;
+  flex-wrap: $wrap;
+}
+
+nav {
+  @include flex(center, space-between);
+  background-color: #0d71f6;
+  padding: 5px 2rem;
+
+  /* Kéo ko biến mất */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav {
+  &-left {
+    @include flex(center); /* chỉnh nằm giữa */
+    position: relative;
+    &-icon ul li {
+      display: inline-block;
+      padding: 1rem;
+      color: black;
+      margin-left: 6rem;
+      font-size: 2rem;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        transition: all 0.25s linear;
+      }
+    }
+    &-icon {
+      margin-left: 30rem;
+    }
+  }
+}
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+.left {
+  &_search {
+    @include size(25rem, 3rem);
+    background-color: #eee;
+    border: 1px solid black;
+    border-radius: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 5rem;
+    transform: translateY(-50%);
+    border: 0;
+  }
+  &_search input {
+    height: 100%;
+    outline: none;
+    border: 0;
+    background: transparent; /* nền trắng */
+  }
+  &_search label {
+    padding-left: 1rem;
+    color: rgba(0, 0, 0, 0.548);
+  }
+  &_icon {
+    margin-left: 30rem;
+  }
+}
+
+.nav {
+  &-user img {
+    @include size(3.5rem);
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  &-user {
+    margin-right: 8rem;
+    cursor: pointer;
+    margin-bottom: -10px;
+  }
+
+  &-name {
+    font-weight: bold;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 4rem;
+    transform: translateY(-50%);
+    padding-bottom: 0.8rem;
+    &:hover {
+      color: white;
+      transition: all 0.25s linear;
+    }
+  }
+  &-right {
+    position: relative;
+    @include flex(center, center);
+    &-item ul li {
+      display: inline-block;
+      padding: 1rem;
+      color: black;
+      margin-right: 2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        transition: all 0.25s linear;
+      }
+    }
+    &-item {
+      margin-right: -2rem;
+    }
+  }
+}
+.online {
+  position: relative;
+  &:after {
+    content: "";
+    @include size(1rem);
+    background-color: #32a24d;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
+    border-radius: 2rem;
+    z-index: 3;
+  }
+}
+.online span {
+  margin-left: 2rem;
+}
+.content {
+  @include flex(flex-start, space-between);
+  padding: 5px 0rem;
+}
+/* ------------------------left-side---------------- */
+.left-side {
+  flex-basis: 25%;
+  background-color: #eee;
+  align-items: center;
+  position: sticky; /* Trượt ko mất */
+  top: 0;
+  position: relative;
+}
+.avatar-link a {
+  @include flex(center);
+  width: fit-content;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: black;
+  &:hover {
+    color: red;
+    transition: all 0.25s linear;
+  }
+}
+.avatar-link img {
+  @include size(3.5rem);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+.item-link a {
+  @include flex(center);
+  width: fit-content;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  color: black;
+  font-weight: 600;
+  &:last-child {
+    color: blue;
+    margin-bottom: 3rem;
+  }
+  &:hover {
+    color: red;
+    transition: all 0.25s linear;
+  }
+}
+.item-link img {
+  width: 35px;
+  margin-right: 15px;
+}
+.item-link i {
+  color: #0c71f8;
+  font-size: 35px;
+  margin-right: 15px;
+}
+.item-link {
+  border-bottom: 1px solid black;
+}
+.shortcut-link a {
+  @include flex(center);
+  margin: 1rem 0 2rem 0;
+  color: black;
+  font-weight: 600;
+  width: fit-content;
+  &:hover {
+    color: red;
+    transition: all 0.25s linear;
+  }
+  &:first-child {
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    color: #6b6d71;
+  }
+  &:hover {
+    color: red;
+    transition: all 0.25s linear;
+  }
+}
+.shortcut-link img {
+  @include size(3.5rem);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+/* ----------------right-side---------------- */
+.right-side {
+  flex-basis: 25%;
+  position: sticky; /* Trượt ko mất */
+  align-items: center;
+  background-color: #eee;
+  padding: 1rem;
+}
+.contact {
+  @include flex(center);
+  margin-bottom: 2rem;
+}
+.contact span {
+  font-weight: 500;
+  color: #6b6d71;
+  margin-right: 8rem;
+  font-size: 1.7rem;
+}
+.contact i {
+  margin-right: 2rem;
+  color: #6b6d71;
+  cursor: pointer;
+}
+.online-list {
+  @include flex(center);
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+.online-list span {
+  position: absolute;
+  top: 45%;
+  left: 6rem;
+  transform: translateY(-50%);
+}
+.online img {
+  @include size(3.5rem);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.chat {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.online img {
+  @include size(5rem);
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.chat i {
+  padding: 1.5rem 1.3rem;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 2rem;
+  padding-left: 1.7rem;
+  cursor: pointer;
+}
+/* ----------------main-content--------------- */
+.main-content {
+  flex-basis: calc(50% - 4rem);
+}
+.story {
+  display: inline-block;
+  position: relative;
+  &:hover:not(:first-child) {
+    img {
+      transform: scale(1.025);
+      transition: all 0.5s;
+    }
+  }
+}
+.story:not(:last-child) {
+  margin-right: 1rem;
+}
+.story img {
+  display: inline-block;
+  @include size(13rem, 23rem);
+  object-fit: cover;
+  border-radius: 2rem;
+  z-index: -1;
+  cursor: pointer;
+}
+.story i {
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  z-index: 2;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  padding: 0.8rem;
+  background-color: #0d71f6;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+.story p {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: 2rem;
+  color: white;
+}
+.story span {
+  position: absolute;
+  width: 10rem;
+  bottom: 1rem;
+  word-break: break-word;
+  left: 50%;
+  font-size: 1.6rem;
+  transform: translateX(-50%);
+  color: white;
+}
+.story-user img {
+  @include size(3.5rem);
+  position: absolute;
+  left: 10%;
+  top: 2rem;
+  z-index: 2;
+  box-shadow: 0 0 0 0.5rem #0d71f6;
+}
+
+.write {
+  &-post {
+    position: relative;
+    margin-top: 2rem;
+    padding: 8rem;
+    background-color: white;
+    border-radius: 2rem;
+  }
+  &-user {
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      content: "";
+      width: 90%;
+      height: 2px;
+      background-color: #f0f2f5;
+      margin-bottom: 2rem;
+    }
+  }
+  &-user img {
+    @include size(4.2rem);
+    border-radius: 3rem;
+    object-fit: cover;
+    position: absolute;
+    top: 1.2rem;
+    left: 1rem;
+    cursor: pointer;
+  }
+  &-user input {
+    position: absolute;
+    left: 7rem;
+    top: 1rem;
+    font-size: 2rem;
+    outline: none;
+    border: 1px solid #eee;
+    border-radius: 2rem;
+    background-color: #f0f2f5;
+    color: black;
+    padding: 1rem;
+    width: 80%;
+  }
+}
+
+.post {
+  display: flex;
+  position: absolute;
+  top: 75%;
+  left: 2.8rem;
+  cursor: pointer;
+  transform: translateY(-75%);
+  &-icon {
+    margin-right: 2rem;
+  }
+  &-icon i {
+    color: red;
+    margin-right: 0.7rem;
+    font-size: 2rem;
+  }
+  &-icon span {
+    font-size: 2rem;
+  }
+}
+.facebook-post {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.user {
+  &-date { 
+    margin-left: 1rem;
+    color: #967375;
+    transition: all 0.5s linear;
+    position: relative;
+    &:hover:after {
+      position: absolute;
+      bottom:0;
+      left:0;
+      content: "";
+      width: 100%;  
+      height: 1px;
+      background-color: #967375;
+    }
+    i{
+     position: absolute;
+     left: 1rem;
+     bottom: 20%;
+     
+    }
+  }
+  &-avt {
+    margin-left: 1rem;
+    color: #7d756f;
+    font-weight: 500;
+  }
+  &-author {
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    font-size: 1.6rem;
+    font-weight: 550;
+    position: relative;
+    transition: all 0.5s linear;
+    &:hover:before {
+      position: absolute;
+      bottom:0;
+      left:0;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: black;
+    }
+  }
+}
+
+.user-post {
+  cursor: pointer;
+  display: flex;
+  img {
+    @include size(4rem);
+    border-radius: 2rem;
+    object-fit: cover;
+  }
+
+  i {
+    margin-top: 1rem;
+    margin-left: 7rem;
+    color: #606770;
+  }
+}
