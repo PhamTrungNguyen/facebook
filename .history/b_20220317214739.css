@@ -1,0 +1,21 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+.happy{
+  background-image: url("https://giphy.com/gifs/KdC9XVrVYOVu6zZiMH/html5");
+}
